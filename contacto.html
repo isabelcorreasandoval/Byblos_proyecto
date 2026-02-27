@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo.png?v=1.1" type="image/png"><!-- Favicon del sitio -->
+    <title>BYBLOS | Contacto</title>
+
+    <!-- Fuentes que estoy utilizando -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap para el diseño responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/misEstilos.css">
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top custom-nav">
+        <div class="container">
+            <a class="navbar-brand logo-byblos" href="index.html">
+                <img src="./img/logo.png" width="30" class="me-2" alt="Logo"> BYBLOS
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#buscador">Buscador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quienesomos.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- contenido principal -->
+    <main class="contact-section-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 card-luxury">
+                    <div class="text-center mb-5">
+                        <h2 class="main-title">Conecta con BYBLOS</h2>
+                    </div>
+
+                    <!-- Formulario de contacto -->
+                    <form id="formContacto">
+                        <div class="mb-4">
+                            <label class="label-control">Nombre Completo</label>
+                            <input type="text" class="form-control custom-input" placeholder="Tu nombre..." required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="label-control">Correo Electrónico</label>
+                            <input type="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="label-control">Mensaje</label>
+                            <textarea class="form-control custom-input" rows="3" placeholder="Escribe tu duda o sugerencia aquí..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-luxury w-100 mt-3">ENVIAR MENSAJE</button>
+                        
+                        <div id="msjExito" class="text-success mt-3 text-center" style="display:none; font-weight:600;">
+                            ¡Mensaje enviado con éxito!
+                        </div>
+                    </form>
+
+                    <!-- Frase decorativa -->
+                    <div class="text-center book-quote">
+                        <p>“Un lector vive mil vidas antes de morir.”</p>
+                        <small>— George R. R. Martin</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="text-muted mb-0">
+                <small>&copy; 2026 Byblos. Primer Parcial. Programación Para Internet. Todos los derechos reservados.</small>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Capturamos el evento submit para mostrar el aviso visual
+        document.getElementById('formContacto').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página cargue de nuevo
+            
+            const aviso = document.getElementById('msjExito');
+            aviso.style.display = 'block'; // Mostramos el mensaje de éxito
+            
+            this.reset(); // Limpiamos los campos
+            
+            // El mensaje desaparece solo después de unos cinco segundos
+            setTimeout(() => { 
+                aviso.style.display = 'none'; 
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

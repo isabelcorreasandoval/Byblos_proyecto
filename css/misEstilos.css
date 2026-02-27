@@ -1,0 +1,189 @@
+/* Variables y base */
+:root {
+    --crema: #fdfbf7;
+    --crema-trans: rgba(253, 251, 247, 0.9);
+    --oscuro: #2c2218;
+    --medio: #5c4b3a;
+    --bronce: #b2967d;
+    --blanco: #ffffff;
+}
+
+/* barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--crema);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bronce);
+    border-radius: 10px;
+    border: 3px solid var(--crema);
+}
+
+body {
+    background-color: var(--crema);
+    font-family: 'Poppins', sans-serif;
+    color: var(--oscuro);
+}
+
+/* Navbar. Ajuste de logo */
+.custom-nav {
+    background-color: var(--crema) !important;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-byblos {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--oscuro) !important;
+    display: flex;
+    align-items: center;
+}
+
+.logo-byblos img {
+    margin-top: -5px; /* Para alinear el ícono a la palabra */
+}
+
+.nav-link {
+    color: #4a3f35 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--bronce) !important;
+}
+
+/* Hero sections */
+.hero-section, .hero-small {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Imagen grande principal de inicio */
+.hero-section {
+    height: 85vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1500&q=80');
+}
+
+/* Versión más pequeña del hero para otras páginas */
+.hero-small {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1500&q=80');
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+/* CONTACTO */
+/* Fondo con imagen para la página de contacto */
+.contact-section-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("../img/Estante.png"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 0;
+    min-height: 80vh;
+}
+
+/* Tarjeta donde va el formulario */
+.card-luxury {
+    background-color: var(--crema-trans) !important;
+    padding: 3rem;
+    border: 1px solid var(--bronce);
+}
+
+/* Componentes */
+/* estilo para botones */
+.btn-luxury {
+    border-radius: 0;
+    text-transform: uppercase;
+    border: none;
+    transition: 0.4s;
+    background: var(--oscuro);
+    color: white;
+    padding: 15px 40px;
+}
+
+.btn-luxury:hover {
+    background: var(--bronce);
+    transform: translateY(-3px);
+}
+
+/* diseño de los campos del formulario */
+.custom-input {
+    border: none;
+    border-bottom: 2px solid var(--bronce);
+    background: transparent;
+    padding: 15px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.label-control {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--medio);
+    display: block;
+}
+
+/* Tarjeta para mostrar resultados del buscador */
+.card-result {
+    background: white;
+    border-left: 8px solid var(--bronce);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.book-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--medio);
+    margin-top: 35px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+/* Animaciones y footer */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Imagen que flota */
+.floating-img {
+    animation: float 6s ease-in-out infinite;
+}
+
+footer {
+    background: white;
+    border-top: 1px solid #eee;
+    padding: 2rem 0;
+}
