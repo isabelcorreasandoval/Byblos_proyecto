@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo.png?v=1.1" type="image/png">
+    <title>BYBLOS | Recomendados</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/misEstilos.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top custom-nav">
+        <div class="container">
+            <a class="navbar-brand logo-byblos" href="index.html">
+                <img src="./img/logo.png" width="30" class="me-2" alt="Logo"> BYBLOS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#buscador">Buscador</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="recomendados.html">Recomendados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quienesomos.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-small hero-recomendados">
+        <div class="container text-center">
+            <h1 class="display-4 main-title text-white">Libros Recomendados por Byblos</h1>
+            <p class="hero-tagline text-white">Joyas literarias que no puedes perderte</p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <span class="book-tag">Selección Especial</span>
+            <h2 class="section-title">Nuestra Biblioteca Personal</h2>
+            <p class="mt-2 text-muted">Los mejores libros seleccionados para ti</p>
+            
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 col-lg-4">
+                    <input type="text" id="filtroByblos" class="form-control custom-input text-center" placeholder="Buscar por título o autor...">
+                </div>
+            </div>
+        </div>
+
+        <div id="contenedorByblos" class="row g-4">
+            </div>
+    </main>
+
+    <footer class="py-4 text-center">
+        <p class="text-muted">
+            <small>&copy; 2026 Byblos. Programación Para Internet. Todos los derechos reservados.</small>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+
+            // Función para conectar con la API de MongoDB en Render
+            function cargarLibrosByblos() {
+                // Mensaje de carga inicial con estilo Byblos
+                $("#contenedorByblos").html(
+                    "<div class='col-12 text-center py-5'>" +
+                        "<div class='spinner-border' style='color: var(--bronce);' role='status'></div>" +
+                        "<h4 class='main-title mt-3' style='color: var(--oscuro); font-style: italic;'>Abriendo la biblioteca...</h4>" +
+                        "<p class='text-muted small'>Estamos consultando nuestros estantes digitales en la nube.</p>" +
+                    "</div>"
+                );
+
+                $.ajax({
+                    url: "https://byblos-backend.onrender.com/api/libros",
+                    method: "GET",
+                    success: function(libros) {
+                        renderizarLibros(libros);
+
+                        // Buscador en tiempo real
+                        $("#filtroByblos").off("keyup").on("keyup", function() {
+                            var valor = $(this).val().toLowerCase();
+                            var filtrados = libros.filter(function(l) {
+                                return l.titulo.toLowerCase().includes(valor) || 
+                                       l.autor.toLowerCase().includes(valor);
+                            });
+                            renderizarLibros(filtrados);
+                        });
+                    },
+                    error: function() {
+                        // Si falla la conexión o tarda demasiado
+                        $("#contenedorByblos").html(
+                            "<div class='col-12 text-center py-5'>" +
+                                "<p class='text-muted'>La biblioteca está cerrada temporalmente <br> Por favor recarga la página.</p>" +
+                                "<button class='btn btn-sm btn-outline-secondary mt-3' onclick='location.reload()'>Recargar</button>" +
+                            "</div>"
+                        );
+                    }
+                });
+            }
+
+            // Función para dibujar los cuadrantes de libros
+            function renderizarLibros(lista) {
+                var html = "";
+                if (lista.length === 0) {
+                    html = "<div class='col-12 text-center'><p class='text-muted'>No encontramos coincidencias.</p></div>";
+                } else {
+                    lista.forEach(function(libro) {
+                        // Usamos el ISBN para traer la portada de Open Library
+                        var img = libro.isbn
+                            ? "https://covers.openlibrary.org/b/isbn/" + libro.isbn + "-L.jpg"
+                            : "https://via.placeholder.com/300x400?text=Byblos";
+                        
+                        html +=
+                            "<div class='col-sm-6 col-md-4 col-lg-3'>" +
+                                "<div class='card-byblos shadow-sm'>" +
+                                    "<img src='" + img + "' class='book-cover-fixed' alt='" + libro.titulo + "'>" +
+                                    "<div class='card-body'>" +
+                                        "<h5 class='main-title mb-1' style='font-size: 1.1rem;'>" + libro.titulo + "</h5>" +
+                                        "<p class='text-muted small mb-2'>" + libro.autor + "</p>" +
+                                        "<p style='font-size: 0.8rem; color: #555;'>" + libro.descripcion + "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+                    });
+                }
+                $("#contenedorByblos").html(html);
+            }
+
+            // Ejecutamos la carga inicial
+            cargarLibrosByblos();
+        });
+    </script>
+</body>
+</html>
