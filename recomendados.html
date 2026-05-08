@@ -80,14 +80,24 @@
 
             // Función para conectar con la API de MongoDB en Render
             function cargarLibrosByblos() {
+                // Ponemos el spinner mientras cargan los libros
+                $("#contenedorByblos").html(
+                    "<div class='col-12 text-center py-5' id='mensaje-carga-biblioteca'>" +
+                        "<div class='spinner-border' style='color: var(--bronce);' role='status'></div>" +
+                        "<h4 class='main-title mt-3' style='color: var(--oscuro); font-style: italic;'>Abriendo la biblioteca...</h4>" +
+                        "<p class='text-muted small'>Consultando nuestros estantes digitales en la nube.</p>" +
+                    "</div>"
+                );
+
                 $.ajax({
                     url: "https://byblos-backend.onrender.com/api/libros",
                     method: "GET",
                     success: function(libros) {
+                        // Al cargar, reemplaza el spinner con los libros
                         renderizarLibros(libros);
 
                         // Buscador en tiempo real
-                        $("#filtroByblos").on("keyup", function() {
+                        $("#filtroByblos").off("keyup").on("keyup", function() {
                             var valor = $(this).val().toLowerCase();
                             var filtrados = libros.filter(function(l) {
                                 return l.titulo.toLowerCase().includes(valor) || 
