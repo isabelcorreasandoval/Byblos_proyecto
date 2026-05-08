@@ -46,7 +46,7 @@ body {
 }
 
 .logo-byblos img {
-    margin-top: -5px;
+    margin-top: -5px; /* Para alinear el ícono a la palabra */
 }
 
 .nav-link {
@@ -71,21 +71,27 @@ body {
     color: white;
 }
 
+/* Imagen grande principal de inicio */
 .hero-section {
     height: 85vh;
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
     url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1500&q=80');
 }
 
+/* Versión más pequeña del hero para otras páginas */
 .hero-small {
     height: 40vh;
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
     url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1500&q=80');
 }
 
+/* Imagen especial para RECOMENDADOS - Biblioteca clásica */
 .hero-recomendados {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
     url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .main-title {
@@ -101,6 +107,7 @@ body {
 }
 
 /* CONTACTO */
+/* Fondo con imagen para la página de contacto */
 .contact-section-bg {
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
     url("../img/Estante.png"); 
@@ -111,6 +118,7 @@ body {
     min-height: 80vh;
 }
 
+/* Tarjeta donde va el formulario */
 .card-luxury {
     background-color: var(--crema-trans) !important;
     padding: 3rem;
@@ -118,6 +126,7 @@ body {
 }
 
 /* Componentes */
+/* estilo para botones */
 .btn-luxury {
     border-radius: 0;
     text-transform: uppercase;
@@ -133,6 +142,7 @@ body {
     transform: translateY(-3px);
 }
 
+/* diseño de los campos del formulario */
 .custom-input {
     border: none;
     border-bottom: 2px solid var(--bronce);
@@ -154,6 +164,7 @@ body {
     display: block;
 }
 
+/* Tarjeta para mostrar resultados del buscador */
 .card-result {
     background: white;
     border-left: 8px solid var(--bronce);
@@ -169,11 +180,13 @@ body {
     padding-top: 25px;
 }
 
+/* Animaciones y footer */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
 
+/* Imagen que flota */
 .floating-img {
     animation: float 6s ease-in-out infinite;
 }
@@ -196,12 +209,14 @@ footer {
     height: 100%;
 }
 
+/* Borde café más grueso y visible al posar el mouse */
 .card-byblos:hover {
     transform: translateY(-5px);
     border: 3px solid var(--bronce);
     box-shadow: 0 0 18px rgba(178, 150, 125, 0.6);
 }
 
+/* Portada con altura fija y que se vea completa sin recortarse */
 .book-cover-fixed {
     width: 100%;
     height: 280px;
@@ -210,6 +225,7 @@ footer {
     border-bottom: 1px solid rgba(178, 150, 125, 0.1);
 }
 
+/* Cuerpo de la tarjeta */
 .card-byblos .card-body {
     padding: 1.2rem;
     text-align: center;
@@ -219,6 +235,7 @@ footer {
     justify-content: flex-start;
 }
 
+/* Etiqueta pequeña de selección */
 .book-tag {
     font-size: 0.7rem;
     color: var(--bronce);
