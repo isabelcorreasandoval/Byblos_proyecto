@@ -85,7 +85,7 @@ body {
     url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1500&q=80');
 }
 
-/* Imagen especial para RECOMENDADOS - Biblioteca clásica */
+/* Imagen para Recomendados */
 .hero-recomendados {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
     url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1500&q=80');
@@ -107,7 +107,6 @@ body {
 }
 
 /* CONTACTO */
-/* Fondo con imagen para la página de contacto */
 .contact-section-bg {
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
     url("../img/Estante.png"); 
@@ -125,7 +124,7 @@ body {
     border: 1px solid var(--bronce);
 }
 
-/* Componentes */
+
 /* estilo para botones */
 .btn-luxury {
     border-radius: 0;
@@ -164,7 +163,7 @@ body {
     display: block;
 }
 
-/* Tarjeta para mostrar resultados del buscador */
+/* tarjeta para mostrar resultados del buscador */
 .card-result {
     background: white;
     border-left: 8px solid var(--bronce);
