@@ -6,14 +6,17 @@
     <link rel="icon" href="./img/logo.png?v=1.1" type="image/png">
     <title>BYBLOS | Recomendados</title>
     
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- CSS Externo -->
     <link rel="stylesheet" href="./css/misEstilos.css">
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top custom-nav">
         <div class="container">
             <a class="navbar-brand logo-byblos" href="index.html">
@@ -34,6 +37,7 @@
         </div>
     </nav>
 
+    <!-- Header con foto diferente a la de Nosotros -->
     <header class="hero-small hero-recomendados">
         <div class="container text-center">
             <h1 class="display-4 main-title text-white">Libros Recomendados por Byblos</h1>
@@ -42,6 +46,7 @@
     </header>
 
     <main class="container my-5">
+        <!-- Encabezado y buscador -->
         <div class="text-center mb-5">
             <span class="book-tag">Selección Especial</span>
             <h2 class="section-title">Nuestra Biblioteca Personal</h2>
@@ -54,8 +59,10 @@
             </div>
         </div>
 
+        <!-- Contenedor de libros, 4 columnas en desktop -->
         <div id="contenedorByblos" class="row g-4">
-            </div>
+            <!-- Los libros se cargan desde la API -->
+        </div>
     </main>
 
     <footer class="py-4 text-center">
@@ -64,6 +71,7 @@
         </p>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -72,15 +80,6 @@
 
             // Función para conectar con la API de MongoDB en Render
             function cargarLibrosByblos() {
-                // Mensaje de carga inicial con estilo Byblos
-                $("#contenedorByblos").html(
-                    "<div class='col-12 text-center py-5'>" +
-                        "<div class='spinner-border' style='color: var(--bronce);' role='status'></div>" +
-                        "<h4 class='main-title mt-3' style='color: var(--oscuro); font-style: italic;'>Abriendo la biblioteca...</h4>" +
-                        "<p class='text-muted small'>Estamos consultando nuestros estantes digitales en la nube.</p>" +
-                    "</div>"
-                );
-
                 $.ajax({
                     url: "https://byblos-backend.onrender.com/api/libros",
                     method: "GET",
@@ -88,7 +87,7 @@
                         renderizarLibros(libros);
 
                         // Buscador en tiempo real
-                        $("#filtroByblos").off("keyup").on("keyup", function() {
+                        $("#filtroByblos").on("keyup", function() {
                             var valor = $(this).val().toLowerCase();
                             var filtrados = libros.filter(function(l) {
                                 return l.titulo.toLowerCase().includes(valor) || 
@@ -98,11 +97,10 @@
                         });
                     },
                     error: function() {
-                        // Si falla la conexión o tarda demasiado
+                        // Si falla la conexión
                         $("#contenedorByblos").html(
                             "<div class='col-12 text-center py-5'>" +
-                                "<p class='text-muted'>La biblioteca está cerrada temporalmente <br> Por favor recarga la página.</p>" +
-                                "<button class='btn btn-sm btn-outline-secondary mt-3' onclick='location.reload()'>Recargar</button>" +
+                                "<p class='text-muted'>La biblioteca está cerrada temporalmente. Inténtalo más tarde.</p>" +
                             "</div>"
                         );
                     }
@@ -137,7 +135,7 @@
                 $("#contenedorByblos").html(html);
             }
 
-            // Ejecutamos la carga inicial
+            // Cargamos los libros al abrir la página
             cargarLibrosByblos();
         });
     </script>
