@@ -209,14 +209,14 @@ footer {
     height: 100%;
 }
 
-/* Borde café más grueso y visible al posar el mouse */
+/* borde café al posar el mouse */
 .card-byblos:hover {
     transform: translateY(-5px);
     border: 3px solid var(--bronce);
     box-shadow: 0 0 18px rgba(178, 150, 125, 0.6);
 }
 
-/* Portada con altura fija y que se vea completa sin recortarse */
+
 .book-cover-fixed {
     width: 100%;
     height: 280px;
@@ -225,7 +225,7 @@ footer {
     border-bottom: 1px solid rgba(178, 150, 125, 0.1);
 }
 
-/* Cuerpo de la tarjeta */
+/* cuerpo de la tarjeta */
 .card-byblos .card-body {
     padding: 1.2rem;
     text-align: center;
@@ -235,7 +235,6 @@ footer {
     justify-content: flex-start;
 }
 
-/* Etiqueta pequeña de selección */
 .book-tag {
     font-size: 0.7rem;
     color: var(--bronce);
